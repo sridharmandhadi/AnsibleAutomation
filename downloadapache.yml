@@ -1,0 +1,19 @@
+---
+- hosts: all
+  tasks:
+       - name: download apache tomcat
+         get_url: 
+            url: http://archive.apache.org/dist/tomcat/tomcat-8/v8.0.23/bin/apache-tomcat-8.0.23.tar.gz
+            dest: /app
+            mode: 0755
+
+       - name: unzip 
+         unarchive:
+                 src: /app/apache-tomcat-8.0.23.tar.gz
+                 dest: /app
+                 remote_src: yes
+
+       - name: remove the tar
+         file:
+                  path: /app/apache-tomcat-8.0.23.tar.gz
+                  state: absent

@@ -1,0 +1,21 @@
+---
+#- hosts: all
+#  tasks:
+#    - name: copy file to remote host
+#      copy:
+#        src: /app/scripts/test.sh
+#        dest: /app/scripts/
+- name: sample playbook 
+  hosts: all
+  tasks:
+      - name: copying the script
+        copy:  
+          src: /app/scripts/test.sh
+          dest: /app/scripts
+          mode: 0755
+
+      - name: executing the script
+        shell: /app/scripts/test.sh {{ Rel_Dir }} 
+
+
+
